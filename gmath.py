@@ -54,14 +54,14 @@ def calculate_diffuse(light, dreflect, normal):
 def calculate_specular(light, sreflect, view, normal):
     cos = 2 * dot_product(light[LOCATION], normal)
 
-    rnorm = [normal[0] * cos - light[LOCATION][0],
+    r = [normal[0] * cos - light[LOCATION][0],
              normal[1] * cos - light[LOCATION][1],
              normal[2] * cos - light[LOCATION][2]]
 
-    spec = dot_product(rnorm, view)
+    spec = dot_product(r, view)
 
     if spec <= 0:
-        return [0,0,0]
+        return [0, 0, 0]
 
     spec = spec ** SPECULAR_EXP
 
